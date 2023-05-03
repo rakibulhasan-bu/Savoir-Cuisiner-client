@@ -1,6 +1,8 @@
 // import React from "react";
 
+import ServingComponent from "../components/ServingComponent";
 import Testimonial from "../components/Testimonial";
+import Chefs from "../components/chefs";
 
 const Home = () => {
   return (
@@ -25,8 +27,12 @@ const Home = () => {
         </div>
       </div>
 
+      {/* chefs section statrt here  */}
+      <Chefs />
       {/* testimonial section here  */}
       <Testimonial />
+      {/* stats section here  */}
+      <ServingComponent />
     </div>
   );
 };
