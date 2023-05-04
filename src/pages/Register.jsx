@@ -70,6 +70,7 @@ const Register = () => {
             console.log(message);
           });
         form.reset();
+        navigate("/");
       })
       .catch((error) => {
         const message = error.message;

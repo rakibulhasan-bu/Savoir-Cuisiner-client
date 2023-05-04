@@ -64,13 +64,6 @@ const Navbar = () => {
                 Log in
               </NavLink>
             )}
-
-            <NavLink
-              to="/register"
-              className="border-b-2 border-transparent text-xl transition-all duration-300 hover:border-primary"
-            >
-              Register
-            </NavLink>
           </ul>
         </div>
         {/* open nav buttons  */}
