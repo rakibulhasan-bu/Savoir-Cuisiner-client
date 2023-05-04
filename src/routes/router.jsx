@@ -26,15 +26,15 @@ export const router = createBrowserRouter([
       },
       {
         path: "/about",
-        element: (
-          <PrivetRoute>
-            <About />
-          </PrivetRoute>
-        ),
+        element: <About />,
       },
       {
         path: "/chefs/:id",
-        element: <ChefRecipes />,
+        element: (
+          <PrivetRoute>
+            <ChefRecipes />
+          </PrivetRoute>
+        ),
         loader: ({ params }) =>
           fetch(`https://savoir-cuisiner-server.vercel.app/chefs/${params.id}`),
       },

@@ -2,13 +2,50 @@
 
 import { useContext } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../contextJs/ContextProvider";
 import { updateProfile } from "firebase/auth";
 
 const Register = () => {
-  const { auth, show, setShow, createUser, setUser, user } =
-    useContext(Context);
+  const {
+    auth,
+    show,
+    setShow,
+    createUser,
+    setUser,
+    user,
+    githubLogin,
+    googleLogin,
+  } = useContext(Context);
+
+  const navigate = useNavigate();
+
+  // google login here
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        const googleUser = result.user;
+        setUser(googleUser);
+        navigate("/");
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        console.log(errorMessage);
+      });
+  };
+  // github log in here
+  const handleGithubLogin = () => {
+    githubLogin()
+      .then((result) => {
+        const githubUser = result.user;
+        setUser(githubUser);
+        navigate("/");
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        console.log(errorMessage);
+      });
+  };
 
   const handleRegister = (event) => {
     event.preventDefault();
@@ -130,6 +167,7 @@ const Register = () => {
 
             <div className="space-y-4">
               <button
+                onClick={handleGithubLogin}
                 type="button"
                 className="block w-full rounded-lg border border-gray-300 bg-white px-4 py-3 font-semibold text-gray-900 hover:bg-primary focus:bg-Gray"
               >
@@ -164,6 +202,7 @@ const Register = () => {
 
               {/* Github button  */}
               <button
+                onClick={handleGoogleLogin}
                 type="button"
                 className="block w-full rounded-lg border border-gray-300 bg-white px-4 py-3 font-semibold text-gray-900  hover:bg-primary hover:text-gray-800 focus:bg-Gray"
               >

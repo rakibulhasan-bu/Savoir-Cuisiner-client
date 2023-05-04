@@ -4,10 +4,39 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Context } from "../contextJs/ContextProvider";
 
 const LogIn = () => {
-  const { show, setShow, signIn, setUser } = useContext(Context);
+  const { show, setShow, signIn, setUser, googleLogin, githubLogin } =
+    useContext(Context);
+
   const navigate = useNavigate();
   const location = useLocation();
   let from = location?.state?.from?.pathname || "/";
+
+  // google login here
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        const googleUser = result.user;
+        setUser(googleUser);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        console.log(errorMessage);
+      });
+  };
+  // github log in here
+  const handleGithubLogin = () => {
+    githubLogin()
+      .then((result) => {
+        const githubUser = result.user;
+        setUser(githubUser);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        console.log(errorMessage);
+      });
+  };
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -95,6 +124,7 @@ const LogIn = () => {
 
             <div className="space-y-4">
               <button
+                onClick={handleGoogleLogin}
                 type="button"
                 className="block w-full rounded-lg border border-gray-300 bg-white px-4 py-3 font-semibold text-gray-900 hover:bg-Gray focus:bg-gray-100"
               >
@@ -128,6 +158,7 @@ const LogIn = () => {
               </button>
 
               <button
+                onClick={handleGithubLogin}
                 type="button"
                 className="block w-full rounded-lg border border-gray-300 bg-white px-4 py-3 font-semibold text-gray-900 hover:bg-Gray focus:bg-gray-100"
               >

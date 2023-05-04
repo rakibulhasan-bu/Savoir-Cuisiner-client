@@ -1,14 +1,16 @@
 import { createContext, useEffect, useState } from "react";
 // firebase auth
 import {
+  GithubAuthProvider,
+  GoogleAuthProvider,
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
 } from "firebase/auth";
 import app from "../utilities/firebase.config";
-
 const auth = getAuth(app);
 // create context here
 export const Context = createContext();
@@ -29,6 +31,20 @@ const ContextProvider = ({ children }) => {
   // useState for mobile navbar
   const [mobileNav, setMobileNav] = useState(false);
 
+  // google provider
+  const googleProvider = new GoogleAuthProvider();
+
+  // google log in here
+  const googleLogin = () => {
+    return signInWithPopup(auth, googleProvider);
+  };
+  // github provider
+  const githubProvider = new GithubAuthProvider();
+
+  // github log in here
+  const githubLogin = () => {
+    return signInWithPopup(auth, githubProvider);
+  };
   // create user
   const createUser = (email, password) => {
     setLoading(true);
@@ -81,6 +97,8 @@ const ContextProvider = ({ children }) => {
     setUser,
     createUser,
     signIn,
+    googleLogin,
+    githubLogin,
     logOut,
     show,
     setShow,
