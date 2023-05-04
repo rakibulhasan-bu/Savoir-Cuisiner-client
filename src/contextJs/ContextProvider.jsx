@@ -3,7 +3,9 @@ import { createContext, useEffect, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
+  signOut,
 } from "firebase/auth";
 import app from "../utilities/firebase.config";
 
@@ -16,9 +18,10 @@ const ContextProvider = ({ children }) => {
   // all chef data load here
   const [chefsData, setChefsData] = useState([]);
   // user state here
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
   // user show password here
   const [show, setShow] = useState(false);
+
   // error state here
   const [error, setError] = useState("");
   // loading state here
@@ -36,6 +39,28 @@ const ContextProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
+  // sign out user
+  const logOut = () => {
+    return signOut(auth);
+  };
+  // useEffect for main load data
+  useEffect(() => {
+    fetch("https://savoir-cuisiner-server.vercel.app/chefs")
+      .then((res) => res.json())
+      .then((data) => setChefsData(data))
+      .catch((error) => console.error(error));
+  }, []);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (loggedUser) => {
+      console.log("logged in user ", loggedUser);
+      setUser(loggedUser);
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
   // pass value from these variable
   const contextInfo = {
     auth,
@@ -51,17 +76,10 @@ const ContextProvider = ({ children }) => {
     setUser,
     createUser,
     signIn,
+    logOut,
     show,
     setShow,
   };
-
-  // useEffect for main load data
-  useEffect(() => {
-    fetch("https://savoir-cuisiner-server.vercel.app/chefs")
-      .then((res) => res.json())
-      .then((data) => setChefsData(data))
-      .catch((error) => console.error(error));
-  }, []);
 
   return <Context.Provider value={contextInfo}>{children}</Context.Provider>;
 };

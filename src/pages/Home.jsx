@@ -22,7 +22,9 @@ const Home = () => {
             for cooks of all skill levels.
           </p>
           <div className="flex items-center justify-center pt-4">
-            <button className="btn">Let&apos;s Explore</button>
+            <a href="#chefs">
+              <button className="btn">Let&apos;s Explore</button>
+            </a>
           </div>
         </div>
       </div>
