@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyCdMrEn3weEecSz3-5m1CJ8U1jzikgmcUM",
-    authDomain: "savoir-cuisiner.firebaseapp.com",
-    projectId: "savoir-cuisiner",
-    storageBucket: "savoir-cuisiner.appspot.com",
-    messagingSenderId: "80412758269",
-    appId: "1:80412758269:web:ea536d7934d613a02fee94"
+    apiKey: import.meta.env.VITE_APIKEY,
+    authDomain: import.meta.env.VITE_AUTHDOMAIN,
+    projectId: import.meta.env.VITE_PROJECTID,
+    storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+    messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+    appId: import.meta.env.VITE_APPID
 };
 
 // Initialize Firebase

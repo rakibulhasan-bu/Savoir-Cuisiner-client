@@ -31,7 +31,7 @@ export const router = createBrowserRouter([
         path: "/chefs/:id",
         element: <ChefRecipes />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/chefs/${params.id}`),
+          fetch(`https://savoir-cuisiner-server.vercel.app/chefs/${params.id}`),
       },
       {
         path: "/contact",
