@@ -81,7 +81,6 @@ const ContextProvider = ({ children }) => {
       unsubscribe();
     };
   }, []);
-
   // pass value from these variable
   const contextInfo = {
     auth,

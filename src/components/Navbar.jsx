@@ -52,17 +52,24 @@ const Navbar = () => {
               <NavLink
                 onClick={handleLogOut}
                 to="/"
-                className="border-b-2 border-transparent text-xl transition-all duration-300 hover:border-primary"
+                className="rounded-md  border-transparent bg-primary px-3 text-xl text-white transition-all duration-300 hover:bg-amber-500"
               >
                 Log out
               </NavLink>
             ) : (
               <NavLink
                 to="/login"
-                className="border-b-2 border-transparent text-xl transition-all duration-300 hover:border-primary"
+                className="rounded-md  border-transparent bg-primary px-3 text-xl text-white transition-all duration-300  hover:bg-amber-500"
               >
                 Log in
               </NavLink>
+            )}
+            {user && (
+              <img
+                title={user?.displayName}
+                className="h-8 w-8 cursor-pointer rounded-full bg-gray-500 object-cover"
+                src={user?.photoURL}
+              />
             )}
           </ul>
         </div>

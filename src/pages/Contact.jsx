@@ -46,7 +46,8 @@ const Contact = () => {
               We want to know your feedback
             </h2>
             <p className="mb-5 leading-relaxed text-gray-600">
-              Give your feedback and rating for future better service.
+              Get in touch with our team to book a reservation or inquire about
+              our services.
             </p>
             <div className="relative mb-4">
               <label htmlFor="name" className="text-sm leading-7 text-gray-600">

@@ -11,6 +11,8 @@ const Register = () => {
     auth,
     show,
     setShow,
+    error,
+    setError,
     createUser,
     setUser,
     user,
@@ -30,7 +32,7 @@ const Register = () => {
       })
       .catch((error) => {
         const errorMessage = error.message;
-        console.log(errorMessage);
+        setError(errorMessage);
       });
   };
   // github log in here
@@ -43,12 +45,13 @@ const Register = () => {
       })
       .catch((error) => {
         const errorMessage = error.message;
-        console.log(errorMessage);
+        setError(errorMessage);
       });
   };
 
   const handleRegister = (event) => {
     event.preventDefault();
+    setError("");
     const form = event.target;
     const name = form.name.value;
     const photo = form.url.value;
@@ -67,14 +70,15 @@ const Register = () => {
           })
           .catch((error) => {
             const message = error.message;
-            console.log(message);
+            setError(message);
           });
         form.reset();
         navigate("/");
+        setError("");
       })
       .catch((error) => {
         const message = error.message;
-        console.log(message);
+        setError(message);
       });
   };
   console.log(user);
@@ -83,9 +87,9 @@ const Register = () => {
       <section className="flex h-[130vh] flex-col md:flex-row-reverse md:rounded-3xl md:bg-white md:shadow-md">
         <div className="hidden h-full w-full md:w-1/2 lg:block">
           <img
-            src="https://source.unsplash.com/random"
+            src="https://res.cloudinary.com/dwx2jd8b1/image/upload/v1683220876/Rakibul_Hasan/log_ini_v07uqn.jpg"
             alt=""
-            className="h-full w-full object-cover md:rounded-e-3xl"
+            className="h-full w-full object-cover object-right-bottom md:rounded-e-3xl"
           />
         </div>
 
@@ -154,7 +158,7 @@ const Register = () => {
                   Forgot Password?
                 </p>
               </div>
-
+              {error && <p className="text-secondary">{error}</p>}
               <button
                 type="submit"
                 className="btn mt-6 block w-full  rounded-lg px-4 py-3

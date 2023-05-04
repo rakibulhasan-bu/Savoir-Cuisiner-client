@@ -4,8 +4,16 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Context } from "../contextJs/ContextProvider";
 
 const LogIn = () => {
-  const { show, setShow, signIn, setUser, googleLogin, githubLogin } =
-    useContext(Context);
+  const {
+    show,
+    setShow,
+    error,
+    setError,
+    signIn,
+    setUser,
+    googleLogin,
+    githubLogin,
+  } = useContext(Context);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -18,10 +26,11 @@ const LogIn = () => {
         const googleUser = result.user;
         setUser(googleUser);
         navigate(from, { replace: true });
+        setError("");
       })
       .catch((error) => {
         const errorMessage = error.message;
-        console.log(errorMessage);
+        setError(errorMessage);
       });
   };
   // github log in here
@@ -31,15 +40,17 @@ const LogIn = () => {
         const githubUser = result.user;
         setUser(githubUser);
         navigate(from, { replace: true });
+        setError("");
       })
       .catch((error) => {
         const errorMessage = error.message;
-        console.log(errorMessage);
+        setError(errorMessage);
       });
   };
 
   const handleLogin = (event) => {
     event.preventDefault();
+    setError("");
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
@@ -52,7 +63,7 @@ const LogIn = () => {
       })
       .catch((err) => {
         const errorMessage = err.message;
-        console.log(errorMessage);
+        setError(errorMessage);
       });
   };
   return (
@@ -60,7 +71,7 @@ const LogIn = () => {
       <section className="flex h-screen flex-col items-center md:flex-row md:rounded-3xl md:bg-white md:shadow-md">
         <div className="hidden h-full w-full md:w-1/2 lg:block">
           <img
-            src="https://source.unsplash.com/random"
+            src="https://res.cloudinary.com/dwx2jd8b1/image/upload/v1683126890/Rakibul_Hasan/Roasted_Lamb_prkyxs.jpg"
             alt=""
             className="h-full w-full object-cover md:rounded-s-3xl"
           />
@@ -110,7 +121,7 @@ const LogIn = () => {
                   Forgot Password?
                 </p>
               </div>
-
+              {error && <p className="text-secondary">{error}</p>}
               <button
                 type="submit"
                 className="btn mt-6 block w-full  rounded-lg px-4 py-3
