@@ -25,24 +25,28 @@ const ContextProvider = ({ children }) => {
   // error state here
   const [error, setError] = useState("");
   // loading state here
-  const [loading, setLoading] = useState("");
+  const [loading, setLoading] = useState(true);
   // useState for mobile navbar
   const [mobileNav, setMobileNav] = useState(false);
 
   // create user
   const createUser = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   // sign in user
   const signIn = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   // sign out user
   const logOut = () => {
+    setLoading(true);
     return signOut(auth);
   };
+
   // useEffect for main load data
   useEffect(() => {
     fetch("https://savoir-cuisiner-server.vercel.app/chefs")
@@ -55,6 +59,7 @@ const ContextProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (loggedUser) => {
       console.log("logged in user ", loggedUser);
       setUser(loggedUser);
+      setLoading(false);
     });
     return () => {
       unsubscribe();

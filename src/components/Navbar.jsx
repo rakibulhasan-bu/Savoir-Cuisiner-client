@@ -5,7 +5,12 @@ import { Context } from "../contextJs/ContextProvider";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
-  const { setMobileNav } = useContext(Context);
+  const { setMobileNav, user, logOut } = useContext(Context);
+  const handleLogOut = () => {
+    logOut()
+      .then()
+      .catch((error) => console.log(error));
+  };
   return (
     <header className="py-5 shadow-md">
       <div className="container mx-auto flex items-center justify-between">
@@ -43,12 +48,22 @@ const Navbar = () => {
               Contact
             </NavLink>
 
-            <NavLink
-              to="/login"
-              className="border-b-2 border-transparent text-xl transition-all duration-300 hover:border-primary"
-            >
-              Log in
-            </NavLink>
+            {user ? (
+              <NavLink
+                onClick={handleLogOut}
+                to="/"
+                className="border-b-2 border-transparent text-xl transition-all duration-300 hover:border-primary"
+              >
+                Log out
+              </NavLink>
+            ) : (
+              <NavLink
+                to="/login"
+                className="border-b-2 border-transparent text-xl transition-all duration-300 hover:border-primary"
+              >
+                Log in
+              </NavLink>
+            )}
 
             <NavLink
               to="/register"

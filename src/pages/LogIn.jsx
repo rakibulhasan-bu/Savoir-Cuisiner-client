@@ -1,10 +1,13 @@
 import { useContext } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Context } from "../contextJs/ContextProvider";
 
 const LogIn = () => {
-  const { show, setShow, signIn } = useContext(Context);
+  const { show, setShow, signIn, setUser } = useContext(Context);
+  const navigate = useNavigate();
+  const location = useLocation();
+  let from = location?.state?.from?.pathname || "/";
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -15,7 +18,8 @@ const LogIn = () => {
       .then((result) => {
         const loggedInUser = result.user;
         form.reset();
-        console.log(loggedInUser);
+        setUser(loggedInUser);
+        navigate(from, { replace: true });
       })
       .catch((err) => {
         const errorMessage = err.message;

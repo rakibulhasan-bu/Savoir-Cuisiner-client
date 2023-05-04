@@ -8,6 +8,7 @@ import Register from "../pages/Register";
 import About from "../pages/About";
 import Contact from "../pages/Contact";
 import ChefRecipes from "../pages/ChefRecipes";
+import PrivetRoute from "./PrivetRoute";
 
 export const router = createBrowserRouter([
   {
@@ -25,7 +26,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <About />,
+        element: (
+          <PrivetRoute>
+            <About />
+          </PrivetRoute>
+        ),
       },
       {
         path: "/chefs/:id",
