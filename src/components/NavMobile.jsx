@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 const NavMobile = () => {
   const { setMobileNav } = useContext(Context);
   return (
-    <nav className="flex h-full w-80 items-center justify-center bg-violet">
+    <nav className="flex h-full w-80 items-center justify-center bg-primary">
       {/* close button  */}
       <div
         onClick={() => setMobileNav(false)}

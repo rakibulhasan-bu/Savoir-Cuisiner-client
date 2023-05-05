@@ -8,13 +8,13 @@ const Home = () => {
   return (
     <div>
       {/* banner section design here  */}
-      <div className=" flex h-[88vh] items-center justify-center bg-coverImg bg-cover bg-center text-white ">
+      <div className=" flex h-96 items-center justify-center bg-coverImg bg-cover bg-center text-white lg:h-[88vh] ">
         <div className="max-w-5xl space-y-6 text-center leading-tight">
-          <h2 className="text-4xl font-bold text-Gray md:text-6xl">
+          <h2 className="px-4 text-3xl font-bold text-Gray md:text-6xl lg:px-0">
             Discover the Best of French Cuisine with{" "}
             <span className="text-primary">Savoir Cuisiner</span>
           </h2>
-          <p className="px-16 text-xl text-Gray">
+          <p className=" text-sm text-Gray lg:px-16 lg:text-xl">
             At Savoir Cuisiner, we are passionate about French food culture and
             are dedicated to sharing the very best recipes and culinary
             traditions with our readers. Our website is a treasure trove of

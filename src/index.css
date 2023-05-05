@@ -15,11 +15,11 @@
     );
   }
   .active {
-    @apply text-xl text-primary;
+    @apply text-xl font-bold text-creamBlack lg:font-medium lg:text-primary;
   }
 
   .btn {
-    @apply flex items-center rounded-full bg-primary px-8 py-3 text-lg font-medium outline-none transition hover:bg-amber-500;
+    @apply flex items-center rounded-full bg-primary px-3 py-1 text-lg font-medium outline-none transition hover:bg-amber-500 lg:px-8 lg:py-3;
   }
   /* not work  */
   /* .h3 {

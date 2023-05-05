@@ -84,8 +84,8 @@ const Register = () => {
   console.log(user);
   return (
     <div className="container mx-auto py-8 md:pb-28">
-      <section className="flex h-[130vh] flex-col md:flex-row-reverse md:rounded-3xl md:bg-white md:shadow-md">
-        <div className="hidden h-full w-full md:w-1/2 lg:block">
+      <section className="flex h-screen flex-col md:flex-row-reverse md:rounded-3xl md:bg-white md:shadow-md lg:h-[130vh]">
+        <div className="hidden h-full w-full md:w-full lg:block">
           <img
             src="https://res.cloudinary.com/dwx2jd8b1/image/upload/v1683220876/Rakibul_Hasan/log_ini_v07uqn.jpg"
             alt=""
@@ -95,7 +95,7 @@ const Register = () => {
 
         {/* text section start here  */}
         <div
-          className="flex w-full items-center justify-center px-6 md:mx-auto md:w-1/2 md:max-w-md md:px-16
+          className="flex w-full items-center justify-center px-6 md:mx-auto md:w-full  md:px-16
         lg:max-w-full xl:w-1/2 xl:px-20"
         >
           <div className="h-100 w-full">

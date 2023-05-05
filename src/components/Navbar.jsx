@@ -12,7 +12,7 @@ const Navbar = () => {
       .catch((error) => console.log(error));
   };
   return (
-    <header className="py-5 shadow-md">
+    <header className="px-4 py-5 shadow-md md:px-8 lg:px-0">
       <div className="container mx-auto flex items-center justify-between">
         <h2 className="text-3xl font-semibold text-primary">Savoir Cuisiner</h2>
         {/* nav and buttons  */}
@@ -76,7 +76,7 @@ const Navbar = () => {
         {/* open nav buttons  */}
         <div
           onClick={() => setMobileNav(true)}
-          className="cursor-pointer text-2xl lg:hidden"
+          className="cursor-pointer text-2xl md:text-4xl lg:hidden"
         >
           <CgMenuRight />
         </div>
