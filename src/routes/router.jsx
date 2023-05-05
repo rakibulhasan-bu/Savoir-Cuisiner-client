@@ -23,6 +23,10 @@ export const router = createBrowserRouter([
       {
         path: "/blog",
         element: <Blog />,
+        loader: () =>
+          fetch(
+            "https://savoir-cuisiner-server-rakibulhasan-bu.vercel.app/blog"
+          ),
       },
       {
         path: "/about",
@@ -36,7 +40,9 @@ export const router = createBrowserRouter([
           </PrivetRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://savoir-cuisiner-server.vercel.app/chefs/${params.id}`),
+          fetch(
+            `https://savoir-cuisiner-server-rakibulhasan-bu.vercel.app/chefs/${params.id}`
+          ),
       },
       {
         path: "/contact",

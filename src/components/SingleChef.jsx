@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
+import LazyLoad from "react-lazy-load";
 
 const SingleChef = ({ singleChefData }) => {
   // eslint-disable-next-line react/prop-types
@@ -12,17 +13,20 @@ const SingleChef = ({ singleChefData }) => {
     profileImage,
     yearsOfExperience,
   } = singleChefData;
-
+  // console.log(singleChefData);
+  console.log(numOfRecipes, name, yearsOfExperience, likes);
   return (
     <div
       id="chefs"
       className="max-w-sm rounded-lg border border-gray-200 bg-white shadow-md hover:shadow-2xl "
     >
-      <img
-        className="h-60 w-full rounded-t-lg"
-        src={profileImage}
-        alt="This is chef's image"
-      />
+      <LazyLoad>
+        <img
+          className="h-60 w-full rounded-t-lg"
+          src={profileImage}
+          alt="This is chef's image"
+        />
+      </LazyLoad>
 
       <div className="px-5 pb-6 pt-3">
         <h5 className="mb-2 text-2xl font-bold tracking-tight text-creamBlack ">

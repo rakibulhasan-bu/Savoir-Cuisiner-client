@@ -65,15 +65,14 @@ const ContextProvider = ({ children }) => {
 
   // useEffect for main load data
   useEffect(() => {
-    fetch("https://savoir-cuisiner-server.vercel.app/chefs")
+    fetch("https://savoir-cuisiner-server-rakibulhasan-bu.vercel.app/chefs")
       .then((res) => res.json())
       .then((data) => setChefsData(data))
-      .catch((error) => console.error(error));
+      .catch((error) => setError(error));
   }, []);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (loggedUser) => {
-      console.log("logged in user ", loggedUser);
       setUser(loggedUser);
       setLoading(false);
     });

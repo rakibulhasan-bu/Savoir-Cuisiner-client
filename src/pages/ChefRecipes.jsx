@@ -1,5 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import RecipeCard from "../components/RecipeCard";
+import LazyLoad from "react-lazy-load";
 
 const ChefRecipes = () => {
   const singleChef = useLoaderData();
@@ -20,21 +21,25 @@ const ChefRecipes = () => {
       <div className="container mx-auto px-5 py-8">
         <div className="mx-auto lg:w-11/12">
           <div className="mx-20 h-96 overflow-hidden rounded-lg">
-            <img
-              alt="content"
-              className="h-full w-full object-cover object-top"
-              src={bannerImage}
-            />
+            <LazyLoad>
+              <img
+                alt="content"
+                className="h-full w-full object-cover object-top"
+                src={bannerImage}
+              />
+            </LazyLoad>
           </div>
 
           <div className="mt-4 flex flex-col sm:flex-row">
             <div className="text-center sm:w-1/3 sm:py-8 sm:pr-8">
               <div className="inline-flex h-24 w-24 items-center justify-center rounded-full bg-gray-200">
-                <img
-                  className="h-full w-full rounded-full object-cover object-center"
-                  src={profileImage}
-                  alt=""
-                />
+                <LazyLoad className="h-full w-full">
+                  <img
+                    className="h-full w-full rounded-full object-cover object-center"
+                    src={profileImage}
+                    alt=""
+                  />
+                </LazyLoad>
               </div>
 
               <div className="flex flex-col items-center justify-center text-center">
