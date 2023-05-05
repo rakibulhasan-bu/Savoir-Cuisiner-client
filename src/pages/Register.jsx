@@ -85,7 +85,7 @@ const Register = () => {
   return (
     <div className="container mx-auto py-8 md:pb-28">
       <section className="flex h-screen flex-col md:flex-row-reverse md:rounded-3xl md:bg-white md:shadow-md lg:h-[130vh]">
-        <div className="hidden h-full w-full md:w-full lg:block">
+        <div className="hidden h-full w-full md:w-1/2 lg:block">
           <img
             src="https://res.cloudinary.com/dwx2jd8b1/image/upload/v1683220876/Rakibul_Hasan/log_ini_v07uqn.jpg"
             alt=""
@@ -94,10 +94,7 @@ const Register = () => {
         </div>
 
         {/* text section start here  */}
-        <div
-          className="flex w-full items-center justify-center px-6 md:mx-auto md:w-full  md:px-16
-        lg:max-w-full xl:w-1/2 xl:px-20"
-        >
+        <div className="flex w-full items-center justify-center px-6 md:mx-auto md:w-full  md:px-16 lg:max-w-full xl:w-1/2 xl:px-20">
           <div className="h-100 w-full">
             <h1 className="mt-4 text-xl font-bold leading-tight md:text-3xl">
               Register your Account {user && <p>{user.email}</p>}

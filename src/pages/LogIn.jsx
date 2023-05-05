@@ -71,7 +71,7 @@ const LogIn = () => {
       <section className="flex h-[70vh] flex-col items-center md:flex-row md:rounded-3xl md:bg-white md:shadow-md lg:h-screen">
         <div className="hidden h-full w-full md:w-1/2 lg:block">
           <img
-            src="https://res.cloudinary.com/dwx2jd8b1/image/upload/v1683126890/Rakibul_Hasan/Roasted_Lamb_prkyxs.jpg"
+            src="https://res.cloudinary.com/dwx2jd8b1/image/upload/v1683301093/Rakibul_Hasan/Roasted_Lamb_yazeen.jpg"
             alt=""
             className="h-full w-full object-cover md:rounded-s-3xl"
           />
